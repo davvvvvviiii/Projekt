@@ -18,7 +18,8 @@
             <td>${p.id}</td>
             <td>${p.name}</td>
             <td>${p.surname}</td>
-            <td><a href="player/remove">usuń</a></td>
+            <td><a href="/user/remove/${p.id}">usuń</a></td>
+            <td><a href="/user/edit/${p.id}">edytuj</a> </td>
         </tr>
     </c:forEach>
 </table>

@@ -19,6 +19,6 @@ public class Player {
     private String name;
     private String surname;
     @ManyToOne
-    @JoinColumn(name = "team_id")
+   // @JoinColumn(name = "team_id")
     private Team team;
 }

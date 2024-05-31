@@ -1,12 +1,10 @@
 package pl.Lenovo.Entity;
 
 import lombok.*;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import javax.validation.constraints.Null;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Getter
@@ -21,8 +19,13 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
     //@JoinColumn(name = "id_players")
     private List<Player> players;
+
+    public void addPlayer(Player player){
+        players.add(player);
+    }
+
 }
 

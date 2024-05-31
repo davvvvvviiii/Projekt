@@ -10,11 +10,10 @@ import pl.Lenovo.Repositories.DisciplineRepositories;
 import pl.Lenovo.Repositories.TeamRepository;
 import pl.Lenovo.Repositories.UserRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping
+@RequestMapping("/user")
 public class UserController {
 
     private final UserRepository userRepository;
@@ -22,29 +21,42 @@ public class UserController {
     public UserController(UserRepository userRepository, TeamRepository teamRepository, DisciplineRepositories disciplineRepositories) {
         this.userRepository = userRepository;
     }
-    @GetMapping("/UserAddForm")
-    public String showUserAddForm(Model model){
+
+    @GetMapping("/add")
+    public String add(Model model){
         model.addAttribute("user",new User());
-        return "User/UserAddForm";
+        return "User/addUser";
     }
-    @PostMapping("/addUser")
+    @PostMapping("/add")
     @ResponseBody
-    public String addUser(User user){
+    public String add(User user){
         userRepository.save(user);
         return user.toString();
     }
-    @GetMapping("/getUser/{id}")
-    public String getUser(@PathVariable Long id){
-        Optional<User> user = userRepository.findById(id);
-        return user.toString();
-    }
-    @GetMapping("/allUsers")
-    public String allUsers(Model model){
+    @GetMapping("/list")
+    public String all(Model model){
         model.addAttribute("users", userRepository.findAll());
-        return "User/AllUsers";
+        return "User/allUsers";
     }
-    @GetMapping("/removeUser/{id}")
-    public void removeUser(@PathVariable Long id){
-            userRepository.deleteById(id);
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable long id){
+        //Optional<Player> player = playerRepository.findById(id);
+        userRepository.deleteById(id);
+        return "redirect:/user/list";
+    }
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable long id, Model model){
+        Optional<User> user = userRepository.findById(id);
+        model.addAttribute("user", user);
+        return "User/editUser";
+    }
+    @PostMapping("/edit")
+    @ResponseBody
+    public String edit(User user){
+        long id = user.getId();
+        String name = user.getName();
+        String surname= user.getSurname();
+        userRepository.updateById(id,name,surname);
+        return user.toString();
     }
 }

@@ -22,7 +22,7 @@ public class PlayerController {
         model.addAttribute("player",new Player());
         return "Player/AddPlayer";
     }
-    @  PostMapping("/addPlayer")
+    @ PostMapping("/addPlayer")
     @ResponseBody
     public String add(Player player){
         playerRepository.save(player);

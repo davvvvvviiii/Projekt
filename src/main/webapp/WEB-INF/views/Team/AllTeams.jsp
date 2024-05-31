@@ -21,6 +21,9 @@
                     ${player.name} ${player.surname}<br/>
                 </c:forEach>
                 </td>
+                <td><a href="/team/remove/${p.id}">usuń</a></td>
+                <td><a href="/team/edit/${p.id}">Edytuj</a></td>
+                <td><a href="/team/addPlayer/">Dodaj zawodnika</a></td>
             </tr>
         </table>
     </c:forEach>

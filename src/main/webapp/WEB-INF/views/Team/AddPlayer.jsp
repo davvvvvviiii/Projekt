@@ -13,12 +13,14 @@
 </head>
 <body>
     <c:forEach items="${players}" var="p">
+        <table>
         <tr>
             <td>${p.id}</td>
             <td>${p.name}</td>
             <td>${p.surname}</td>
             <td><a href="/team/addToTeam/${p.id}">Dodaj</a></td>
         </tr>
+        </table>
     </c:forEach>
 </body>
 </html>

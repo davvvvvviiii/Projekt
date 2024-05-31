@@ -8,6 +8,8 @@ import pl.Lenovo.Entity.Team;
 import pl.Lenovo.Repositories.PlayerRepository;
 import pl.Lenovo.Repositories.TeamRepository;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/team")
 public class TeamController {
@@ -35,14 +37,40 @@ public class TeamController {
         model.addAttribute("teams", teamRepository.findAll());
         return "Team/AllTeams";
     }
-
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable long id){
+        teamRepository.deleteById(id);
+        return "redirect:/team/list";
+    }
+    @GetMapping("/edit/{id}")
+    public String editForm(@PathVariable long id, Model model){
+        Optional<Team> team = teamRepository.findById(id);
+        model.addAttribute("team", team);
+        return "Team/EditTeam";
+    }
+    @PostMapping("/edit")
+    @ResponseBody
+    public String edit(Team team){
+        long id = team.getId();
+        String name = team.getName();
+        teamRepository.updateById(id,name);
+        return team.toString();
+    }
     @GetMapping("/addPlayer")
     public String addPlayer(Model model){
         model.addAttribute("players", playerRepository.findAll());
         return "Team/AddPlayer";
     }
-    @GetMapping("/addToTeam")
-    public String addToTeam(Player player){
-        return null;
+    @GetMapping("/addToTeam/{playerId}")
+    public String addToTeam(@PathVariable long playerId, Team team){
+        Optional<Player> optionalPlayer = playerRepository.findById(playerId);
+        //team.getId();
+        if (optionalPlayer.isPresent()) {
+            Player player = optionalPlayer.get();
+            player.setTeam(team);
+            player.getId();
+            playerRepository.save( player);
+        }
+        return "redirect:/team/list";
     }
 }
