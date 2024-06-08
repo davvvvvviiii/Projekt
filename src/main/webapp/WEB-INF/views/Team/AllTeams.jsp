@@ -23,7 +23,7 @@
                 </td>
                 <td><a href="/team/remove/${p.id}">usuń</a></td>
                 <td><a href="/team/edit/${p.id}">Edytuj</a></td>
-                <td><a href="/team/addPlayer/">Dodaj zawodnika</a></td>
+                <td><a href="/team/addPlayer/${p.id}">Dodaj zawodnika</a></td>
             </tr>
         </table>
     </c:forEach>

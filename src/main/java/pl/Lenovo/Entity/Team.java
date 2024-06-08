@@ -13,7 +13,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Entity
 @Table(name = "teams")
-@ToString
+//@ToString
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

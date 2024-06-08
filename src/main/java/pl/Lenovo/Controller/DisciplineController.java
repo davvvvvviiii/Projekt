@@ -53,4 +53,5 @@ public class DisciplineController {
         disciplineRepositories.updateById(id,name,description);
         return sportDiscipline.toString();
     }
+
 }

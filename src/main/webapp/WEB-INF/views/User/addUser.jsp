@@ -22,6 +22,10 @@
         <form:input path="surname"/>
     </label>
     <hr/>
+    <label>Password:
+        <form:password path="password"/>
+    </label>
+    <hr/>
     <form:button>Save</form:button>
 </form:form>
 </body>

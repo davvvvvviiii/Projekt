@@ -56,18 +56,20 @@ public class TeamController {
         teamRepository.updateById(id,name);
         return team.toString();
     }
-    @GetMapping("/addPlayer")
-    public String addPlayer(Model model){
+    @GetMapping("/addPlayer/{teamId}")
+    public String addPlayer(Model model,@PathVariable long teamId){
         model.addAttribute("players", playerRepository.findAll());
+        model.addAttribute("teamId",teamId);
         return "Team/AddPlayer";
     }
-    @GetMapping("/addToTeam/{playerId}")
-    public String addToTeam(@PathVariable long playerId, Team team){
+    @GetMapping("/addToTeam/{teamId}/{playerId}")
+    public String addToTeam(@PathVariable long playerId, @PathVariable long teamId){
         Optional<Player> optionalPlayer = playerRepository.findById(playerId);
         //team.getId();
         if (optionalPlayer.isPresent()) {
             Player player = optionalPlayer.get();
-            player.setTeam(team);
+            Optional<Team> optionalTeam = teamRepository.findById(teamId);
+            player.setTeam(optionalTeam.get());
             player.getId();
             playerRepository.save( player);
         }

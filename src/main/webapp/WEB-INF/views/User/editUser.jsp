@@ -18,6 +18,8 @@
     <form:input path="name"/>
     nazwisko
     <form:input path="surname"/>
+    password
+    <form:password path="password"/>
     <form:button>save</form:button>
   </form:form>
 </body>
