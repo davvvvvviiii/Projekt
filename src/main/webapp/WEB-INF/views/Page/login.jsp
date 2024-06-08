@@ -19,7 +19,7 @@
 <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
 <%--</form>--%>
 <h2>Logowanie</h2>
-<form action="${pageContext.request.contextPath}/login" method="post">
+<form  method="post">
     <label for="username">Nazwa użytkownika:</label>
     <input type="text" id="username" name="username"><br>
 
@@ -28,5 +28,14 @@
 
     <input type="submit" value="Zaloguj">
 </form>
+<%--<form action="${pageContext.request.contextPath}/login" method="post">--%>
+<%--    <label for="username">Nazwa użytkownika:</label>--%>
+<%--    <input type="text" id="username" name="username"><br>--%>
+
+<%--    <label for="password">Hasło:</label>--%>
+<%--    <input type="password" id="password" name="password"><br>--%>
+
+<%--    <input type="submit" value="Zaloguj">--%>
+<%--</form>--%>
 </body>
 </html>

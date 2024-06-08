@@ -1,5 +1,6 @@
 package pl.Lenovo.Services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.Lenovo.Entity.Role;
@@ -16,6 +17,7 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
+    @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;

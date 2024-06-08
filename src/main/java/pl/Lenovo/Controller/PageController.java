@@ -21,11 +21,11 @@ public class PageController {
     public String login() {
         return "Page/login";
     }
-    @PostMapping("/login")
-    public String loginPost() {
-        // Obsluga zalogowania
-        return "redirect:/home";
-    }
+//    @PostMapping("/login")
+//    public String loginPost() {
+//        // Obsluga zalogowania
+//        return "redirect:/home";
+//    }
     @GetMapping("/home")
     public String home() {
         return "Page/home";
