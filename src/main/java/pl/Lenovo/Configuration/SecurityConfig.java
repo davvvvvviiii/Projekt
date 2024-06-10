@@ -19,6 +19,7 @@ import pl.Lenovo.Services.SpringDataUserDetailsService;
 public class SecurityConfig{
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
 
@@ -40,12 +41,14 @@ public class SecurityConfig{
                     .formLogin()
                     .loginPage("/login")
                     .defaultSuccessUrl("/home", true)
+                    .failureUrl("/login?error=true")
 //                    .usernameParameter("name")
 //                    .passwordParameter("password")
                     .and()
                     .logout()
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/login?logout");
+                    http.csrf().disable();
 //                    .invalidateHttpSession(true)
 //                    .deleteCookies("JSESSIONID");
             return http.build();

@@ -9,6 +9,7 @@ import pl.Lenovo.Repositories.RoleRepository;
 import pl.Lenovo.Repositories.UserRepository;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 @Service
@@ -34,7 +35,11 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);
         Role userRole = roleRepository.findByRole("ROLE_USER");
-        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        if (userRole == null) {
+            // Obsługa przypadku, gdy rola nie istnieje w bazie danych
+            throw new RuntimeException("Role 'ROLE_USER' not found");
+        }
+        user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
         userRepository.save(user);
     }
 }

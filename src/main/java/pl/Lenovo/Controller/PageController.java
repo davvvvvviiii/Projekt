@@ -21,25 +21,10 @@ public class PageController {
     public String login() {
         return "Page/login";
     }
-//    @PostMapping("/login")
-//    public String loginPost() {
-//        // Obsluga zalogowania
-//        return "redirect:/home";
-//    }
     @GetMapping("/home")
     public String home() {
         return "Page/home";
     }
-//    @PostMapping("/home")
-//    @ResponseBody
-//    public String homePage(@RequestParam String name,@RequestParam String password) {
-//        Optional<User> user = userRepository.findByName(name, password);
-//        if (user.isPresent()) {
-//
-//            return "Page/home";
-//        }
-//        return "User nie istnieje" + "\n" +
-//                "Spróbuj ponownie lub zarejestruj się";
-//    }
+
 
 }
