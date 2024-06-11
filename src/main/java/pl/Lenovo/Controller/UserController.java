@@ -3,6 +3,7 @@ package pl.Lenovo.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 //import pl.Lenovo.Dao.PlayerDao;
 //import pl.Lenovo.Dao.UserDao;
@@ -14,6 +15,7 @@ import pl.Lenovo.Repositories.TeamRepository;
 import pl.Lenovo.Repositories.UserRepository;
 import pl.Lenovo.Services.UserServiceImpl;
 
+import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -36,19 +38,20 @@ public class UserController {
         return "User/addUser";
     }
     @PostMapping("/add")
-    @ResponseBody
     @Transactional
-    public String add(User user) {
-//        userService.saveUser(user);
-//        return user.toString();
-//    }
-        try {
-            userService.saveUser(user);
-            return "User saved successfully: " + user.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Error saving user: " + e.getMessage();
+    public String add(@ModelAttribute("user")@Valid User user, BindingResult result) {
+        if (result.hasErrors()){
+            return "User/addUser";
         }
+        userService.saveUser(user);
+        return "redirect:/login";
+//        try {
+//            userService.saveUser(user);
+//            return "User saved successfully: ";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return "Error saving user: " + e.getMessage();
+//        }
     }
     @GetMapping("/list")
     public String all(Model model){

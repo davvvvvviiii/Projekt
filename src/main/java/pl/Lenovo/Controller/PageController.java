@@ -26,5 +26,10 @@ public class PageController {
         return "Page/home";
     }
 
+    @GetMapping("/error-login")
+    public String errorLogin(Model model) {
+        model.addAttribute("loginError", true);
+        return "Page/login";
+    }
 
 }

@@ -16,14 +16,17 @@
     <form:hidden path="id"/>
     <label>First name:
         <form:input path="name"/>
+        <form:errors path="name"/>
     </label>
     <hr/>
     <label>Last name:
         <form:input path="surname"/>
+        <form:errors path="surname"/>
     </label>
     <hr/>
     <label>Password:
         <form:password path="password"/>
+        <form:errors path="password"/>
     </label>
     <hr/>
     <form:button>Save</form:button>

@@ -1,13 +1,20 @@
 package pl.Lenovo.Controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.Lenovo.Entity.Player;
 import pl.Lenovo.Entity.Team;
+import pl.Lenovo.Entity.User;
 import pl.Lenovo.Repositories.PlayerRepository;
 import pl.Lenovo.Repositories.TeamRepository;
+import pl.Lenovo.Repositories.UserRepository;
 
+import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -15,10 +22,12 @@ import java.util.Optional;
 public class TeamController {
     private final TeamRepository teamRepository;
     private final PlayerRepository playerRepository;
+    private final UserRepository userRepository;
 
-    public TeamController(TeamRepository teamRepository, PlayerRepository playerRepository) {
+    public TeamController(TeamRepository teamRepository, PlayerRepository playerRepository, UserRepository userRepository) {
         this.teamRepository = teamRepository;
         this.playerRepository = playerRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/add")
@@ -27,13 +36,23 @@ public class TeamController {
         return "Team/AddTeam";
     }
     @PostMapping("/add")
-    @ResponseBody
-    public String addTeam(Team team){
+    public String addTeam(@ModelAttribute("team")@Valid Team team, BindingResult result){
+        if (result.hasErrors()){
+            return "Team/Addteam";
+        }
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String userName = authentication.getName();
+//        User user = userRepository.findByUsernameWithTeams(userName);
+//        user.getTeamList().add(team);
         teamRepository.save(team);
-        return team.toString();
+        return "redirect:/team/list";
     }
     @GetMapping("/list")
     public String all(Model model){
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String userName = authentication.getName();
+//        User user = userRepository.findByUsernameWithTeams(userName);
+//        List<Team> teamList = user.getTeamList();
         model.addAttribute("teams", teamRepository.findAll());
         return "Team/AllTeams";
     }
@@ -49,12 +68,11 @@ public class TeamController {
         return "Team/EditTeam";
     }
     @PostMapping("/edit")
-    @ResponseBody
     public String edit(Team team){
         long id = team.getId();
         String name = team.getName();
         teamRepository.updateById(id,name);
-        return team.toString();
+        return "redirect:/team/list";
     }
     @GetMapping("/addPlayer/{teamId}")
     public String addPlayer(Model model,@PathVariable long teamId){
@@ -74,5 +92,18 @@ public class TeamController {
             playerRepository.save( player);
         }
         return "redirect:/team/list";
+    }
+    @GetMapping("/showPlayers/{id}")
+    public String showPlayers(Model model, @PathVariable Long id) {
+        Optional<Team> teamOpt = teamRepository.findById(id);
+        if (teamOpt.isPresent()) {
+            Team team = teamOpt.get();
+            model.addAttribute("playerNames", team.getPlyersNames());
+        }
+        return "Team/PlayersForTeam";
+    }
+    @GetMapping("/menu")
+    public String menu(){
+        return "Team/TeamMenu";
     }
 }

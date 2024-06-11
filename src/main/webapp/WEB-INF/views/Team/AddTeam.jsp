@@ -16,6 +16,7 @@
         <label>
             Nazwa drużyny
         <form:input path="name"/>
+        <form:errors path="name"/>
         </label>
 <%--        <form:hidden path="players"/>--%>
         <form:button>save  </form:button>

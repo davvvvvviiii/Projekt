@@ -20,6 +20,8 @@
                 <td>${p.description}</td>
                 <td><a href="/discipline/remove/${p.id}">usuń</a></td>
                 <td><a href="/discipline/edit/${p.id}">edytuj</a></td>
+                <td><a href="/discipline/addTeam/${p.id}">Dodaj drużynę</a></td>
+                <td><a href="/discipline/showTeams/${p.id}">Pokaż drużyny</a></td>
             </tr>
         </c:forEach>
     </table>

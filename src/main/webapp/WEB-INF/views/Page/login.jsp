@@ -8,9 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Login</title>
+    <style>
+        form{
+            border: 1px solid;
+            padding: 15px;
+        }
+
+    </style>
 </head>
 <body>
 <%--<form method="post">--%>
@@ -20,7 +28,7 @@
 <%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
 <%--</form>--%>
 <h2>Logowanie</h2>
-<form  method="post">
+<form  method="post" action="<c:url value='/login' />">
     <label for="username">Nazwa użytkownika:</label>
     <input type="text" id="username" name="username"><br>
 
@@ -29,6 +37,11 @@
 
     <input type="submit" value="Zaloguj">
 </form>
+<c:if test="${not empty loginError}">
+    <p style="color: red;">Błędne hasło lub login. Spróbuj ponownie </p><Br>
+    lub<br>
+    <a href="/user/add"> stwórz konto</a>
+</c:if>
 <%--<form action="${pageContext.request.contextPath}/login" method="post">--%>
 <%--    <label for="username">Nazwa użytkownika:</label>--%>
 <%--    <input type="text" id="username" name="username"><br>--%>

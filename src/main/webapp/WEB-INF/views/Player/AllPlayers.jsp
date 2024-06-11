@@ -22,6 +22,9 @@
                 <td><a href="/player/edit/${p.id}">Edytuj</a></td>
             </tr>
         </c:forEach>
+        <tr>
+            <td><a href="/home">Wróć do menu</a></td>
+        </tr>
     </table>
 </body>
 </html>

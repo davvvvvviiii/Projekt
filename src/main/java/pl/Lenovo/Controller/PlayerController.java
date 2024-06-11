@@ -2,10 +2,12 @@ package pl.Lenovo.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.Lenovo.Entity.Player;
 import pl.Lenovo.Repositories.PlayerRepository;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -22,11 +24,13 @@ public class PlayerController {
         model.addAttribute("player",new Player());
         return "Player/AddPlayer";
     }
-    @ PostMapping("/addPlayer")
-    @ResponseBody
-    public String add(Player player){
+    @PostMapping("/addPlayer")
+    public String add(@ModelAttribute("player")@Valid Player player, BindingResult result){
+        if (result.hasErrors()){
+            return "Player/AddPlayer";
+        }
         playerRepository.save(player);
-        return player.toString();
+        return "redirect:/player/list";
     }
     @GetMapping("/list")
     public String all(Model model){
@@ -46,12 +50,15 @@ public class PlayerController {
         return "Player/EditPlayer";
     }
     @PostMapping("/edit")
-    @ResponseBody
     public String edit(Player player){
         long id = player.getId();
         String name = player.getName();
         String surname= player.getSurname();
         playerRepository.updateById(id,name,surname);
-        return player.toString();
+        return "redirect:/player/list";
+    }
+    @GetMapping("/menu")
+    public String menu(){
+        return "Player/PlayerMenu";
     }
 }

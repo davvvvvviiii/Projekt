@@ -10,16 +10,19 @@
 <html>
 <head>
     <title>Add player</title>
+
 </head>
 <body>
     <form:form method="post" action="/player/addPlayer" modelAttribute="player">
         <label>
             Imię
             <form:input path="name"/>
+            <form:errors path="name"/>
         </label>
         <label>
             Nazwisko
             <form:input path="surname"/>
+            <form:errors path="surname"/>
         </label>
 <%--        <label>--%>
 <%--            Drużyna--%>

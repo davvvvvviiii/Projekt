@@ -6,7 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import pl.Lenovo.Entity.SportDiscipline;
 import pl.Lenovo.Entity.Team;
+import pl.Lenovo.Entity.User;
+
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 @Transactional
 public interface TeamRepository extends JpaRepository<Team,Long> {
@@ -15,5 +21,4 @@ public interface TeamRepository extends JpaRepository<Team,Long> {
     @Query("UPDATE Team p SET p.name = :name WHERE p.id = :id")
     void updateById(@Param("id") Long id, @Param("name") String name);
 
-    //void updateAndAddPlayer()
 }

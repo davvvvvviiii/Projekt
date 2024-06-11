@@ -13,10 +13,12 @@
 </head>
 <body>
     <form:form action="/discipline/add" method="post" modelAttribute="discipline">
-        nazwa
+        Nazwa
         <form:input path="name"/>
-        opis
+        <form:errors path="name"/>
+        Opis
         <form:textarea path="description"/>
+        <form:errors path="description"/>
         <form:button>save</form:button>
     </form:form>
 </body>
