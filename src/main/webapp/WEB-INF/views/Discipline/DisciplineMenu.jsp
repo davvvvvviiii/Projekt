@@ -9,9 +9,20 @@
 <html>
 <head>
     <title>Discipline Menu</title>
+    <style>
+        ul{
+            border: 1px solid black;
+            text-align: center;
+        }
+        li{
+            font-size: x-large;
+        }
+    </style>
 </head>
 <body>
-<a href="/discipline/add">Dodaj zawody</a>
-<a href="/discipline/list">Lista zawodów</a>
+<ul>
+    <li><a href="/discipline/add">Dodaj zawody</a></li>
+    <li><a href="/discipline/list">Lista zawodów</a></li>
+</ul>
 </body>
 </html>

@@ -10,8 +10,17 @@
 <html>
 <head>
     <title>All disciplines</title>
+    <style>
+        table{
+            border: 1px solid;
+            margin: 0 auto;
+            width: 50%;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
+<a href="/home">Wróć do menu</a>
     <table>
         <c:forEach items="${disciplines}" var="p">
             <tr>

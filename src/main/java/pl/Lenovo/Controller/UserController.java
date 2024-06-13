@@ -16,6 +16,7 @@ import pl.Lenovo.Repositories.UserRepository;
 import pl.Lenovo.Services.UserServiceImpl;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -64,20 +65,29 @@ public class UserController {
         userRepository.deleteById(id);
         return "redirect:/user/list";
     }
-    @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable long id, Model model){
-        Optional<User> user = userRepository.findById(id);
-        model.addAttribute("user", user);
-        return "User/editUser";
-    }
+//    @GetMapping("/edit/{id}")
+//    public String editForm(@PathVariable long id, Model model){
+//        Optional<User> user = userRepository.findById(id);
+//        model.addAttribute("user", user);
+//        return "User/editUser";
+//    }
     @PostMapping("/edit")
-    @ResponseBody
-    public String edit(User user){
-        long id = user.getId();
-        String name = user.getName();
-        String surname= user.getSurname();
-        String password = user.getPassword();
-        userRepository.updateById(id,name,surname,password);
-        return user.toString();
+    public String edit(@ModelAttribute("user")@Valid User user, BindingResult result){
+        if (result.hasErrors()){
+            return "User/editUser";
+        }
+//        long id = user.getId();
+//        String name = user.getName();
+//        String surname= user.getSurname();
+//        String password = user.getPassword();
+//        userRepository.updateById(id,name,surname,password);
+        userService.saveUser(user);
+        return "Page/home";
+    }
+    @GetMapping("/edit")
+    public String editForm(Model model, Principal principal){
+        User user = userService.findByUserName(principal.getName());
+        model.addAttribute("user",user);
+        return "User/editUser";
     }
 }

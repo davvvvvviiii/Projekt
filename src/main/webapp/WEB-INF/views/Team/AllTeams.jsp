@@ -10,8 +10,18 @@
 <html>
 <head>
     <title>All teams</title>
+    <style>
+        table{
+            border: 1px solid;
+            margin: 0 auto;
+            width: 50%;
+            border-collapse: collapse;
+        }
+
+    </style>
 </head>
 <body>
+<a href="/home">Wróć do menu</a><br>
     <c:forEach items="${teams}" var="p">
         <table>
             <tr>

@@ -16,25 +16,28 @@
         form{
             border: 1px solid;
             padding: 15px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 50%;
+            text-align: center;
         }
-
+        h2{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-<%--<form method="post">--%>
-<%--    <div><label> User Name : <input type="text" name="surname"/> </label></div>--%>
-<%--    <div><label> Password: <input type="password" name="password"/> </label></div>--%>
-<%--    <div><input type="submit" value="Sign In"/></div>--%>
-<%--    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--</form>--%>
 <h2>Logowanie</h2>
 <form  method="post" action="<c:url value='/login' />">
-    <label for="username">Nazwa użytkownika:</label>
+    <label for="username">Nazwa użytkownika:</label><br>
     <input type="text" id="username" name="username"><br>
-
+    <br>
+    <br>
     <label for="password">Hasło:</label>
+    <br>
     <input type="password" id="password" name="password"><br>
-
+    <br>
+    <br>
     <input type="submit" value="Zaloguj">
 </form>
 <c:if test="${not empty loginError}">

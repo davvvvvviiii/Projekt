@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,8 @@ public class SportDiscipline {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="team_id")
     private List<Team> teamList;
+//    @NotNull(message = "Podaj datę")
+//    private Date date;
 
     public void addTeam(Team team) {
         this.teamList.add(team);
@@ -49,4 +52,5 @@ public class SportDiscipline {
                 ", teamList=" + teamList +
                 '}';
     }
+
 }

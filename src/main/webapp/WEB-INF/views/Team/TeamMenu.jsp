@@ -9,9 +9,20 @@
 <html>
 <head>
     <title>Team Menu</title>
+    <style>
+        ul{
+            border: 1px solid black;
+            text-align: center;
+        }
+        li{
+            font-size: x-large;
+        }
+    </style>
 </head>
 <body>
-<a href="/team/add">Dodaj drużynę</a>
-<a href="/team/list">Lista drużyn</a>
+<ul>
+    <li><a href="/team/add">Dodaj drużynę</a></li><br>
+    <li><a href="/team/list">Lista drużyn</a></li>
+</ul>
 </body>
 </html>

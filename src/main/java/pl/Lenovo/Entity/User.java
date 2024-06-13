@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.Set;
 
@@ -22,9 +23,11 @@ public class User {
     private Long id;
     @NotNull
     @NotBlank(message = "Nazwa nie może być pusta")
+    @Pattern(regexp = "[a-zA-Z0-9]+", message = "Pole może zawierać tylko litery i cyfry")
     private String name;
     @NotNull
     @NotBlank(message = "Nazwisko nie może być puste")
+    @Pattern(regexp = "[a-zA-Z0-9]+", message = "Pole może zawierać tylko litery i cyfry")
     private String surname;
     @NotNull
     @NotBlank(message = "Hasło nie może być puste")

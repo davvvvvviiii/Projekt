@@ -10,14 +10,27 @@
 <html>
 <head>
     <title>Edit discipline</title>
+    <style>
+        form{
+            border: 1px solid black;
+            text-align: center;
+            font-size: large;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
     <form:form action="/discipline/edit" method="post" modelAttribute="discipline">
         <form:hidden path="id"/>
-        nazwa
+        nazwa<br>
         <form:input path="name"/>
-        opis
+        <br>
+        <br>
+        opis<br>
         <form:textarea path="description"/>
+        <br>
+        <br>
         <form:button>save</form:button>
     </form:form>
 </body>

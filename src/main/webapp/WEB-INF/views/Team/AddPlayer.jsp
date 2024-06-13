@@ -10,6 +10,14 @@
 <html>
 <head>
     <title>PlayerToTeam</title>
+    <style>
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 50%;
+            border: 1px solid;
+        }
+    </style>
 </head>
 <body>
     <c:forEach items="${players}" var="p">

@@ -10,8 +10,17 @@
 <html>
 <head>
     <title>All Players</title>
+    <style>
+        table{
+            border: 1px solid ;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 50%;
+        }
+    </style>
 </head>
 <body>
+<a href="/home">Wróć do menu</a><br>
     <table>
         <c:forEach items="${players}" var="p">
             <tr>
@@ -22,9 +31,6 @@
                 <td><a href="/player/edit/${p.id}">Edytuj</a></td>
             </tr>
         </c:forEach>
-        <tr>
-            <td><a href="/home">Wróć do menu</a></td>
-        </tr>
     </table>
 </body>
 </html>

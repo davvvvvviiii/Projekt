@@ -38,7 +38,7 @@ public class TeamController {
     @PostMapping("/add")
     public String addTeam(@ModelAttribute("team")@Valid Team team, BindingResult result){
         if (result.hasErrors()){
-            return "Team/Addteam";
+            return "Team/AddTeam";
         }
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        String userName = authentication.getName();
@@ -99,6 +99,7 @@ public class TeamController {
         if (teamOpt.isPresent()) {
             Team team = teamOpt.get();
             model.addAttribute("playerNames", team.getPlyersNames());
+            //model.addAttribute("playerSurname", team.getPlayersSurname());
         }
         return "Team/PlayersForTeam";
     }

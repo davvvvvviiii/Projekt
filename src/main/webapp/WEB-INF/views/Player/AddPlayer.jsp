@@ -10,20 +10,32 @@
 <html>
 <head>
     <title>Add player</title>
-
+    <style>
+        form{
+            border: 1px solid black;
+            text-align: center;
+            font-size: large;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
     <form:form method="post" action="/player/addPlayer" modelAttribute="player">
         <label>
-            Imię
+            Imię<br>
             <form:input path="name"/>
             <form:errors path="name"/>
         </label>
+        <br>
+        <br>
         <label>
-            Nazwisko
+            Nazwisko<br>
             <form:input path="surname"/>
             <form:errors path="surname"/>
         </label>
+        <br>
+        <br>
 <%--        <label>--%>
 <%--            Drużyna--%>
 <%--            <form:input path="team"/>--%>

@@ -18,7 +18,6 @@
             padding: 20px;
             border: 1px solid;
             box-shadow: black;
-
         }
         li{
             font-size: x-large;
@@ -28,6 +27,7 @@
             padding: 20px;
             float: right;
             width: 20%;
+            text-align: center;
         }
     </style>
 </head>
@@ -40,9 +40,10 @@
         </ul>
     </div>
     <div id="userInf">
-        <sec:authorize access="isAuthenticated()">
+        <sec:authorize access="isAuthenticated()" var="p">
             <p>Zalogowany jako: <sec:authentication property="principal.username"/></p>
             <p>Posiada role: <sec:authentication property="authorities"/></p>
+            <p><a href="<c:url value='/user/edit' />">Edytuj Profil</a></p>
         </sec:authorize><br>
             <form action="<c:url value="/logout"/>" method="post">
                 <button type="submit">Wyloguj</button>

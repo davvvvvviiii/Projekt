@@ -10,6 +10,15 @@
 <html>
 <head>
     <title>Add User</title>
+    <style>
+        form{
+            border: 1px solid;
+            padding: 15px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 50%;
+        }
+    </style>
 </head>
 <body>
 <form:form method="post" modelAttribute="user" action="/user/add">

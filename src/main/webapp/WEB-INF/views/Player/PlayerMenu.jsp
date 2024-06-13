@@ -9,9 +9,22 @@
 <html>
 <head>
     <title>Player Menu</title>
+    <style>
+        #lista{
+            border: 1px solid black;
+            text-align: center;
+        }
+        li{
+            font-size: x-large;
+        }
+    </style>
 </head>
 <body>
-    <a href="/player/add">Dodaj zawodnika</a>
-    <a href="/player/list">Lista zawodników</a>
+<div id="lista">
+    <ul>
+        <li><a href="/player/add">Dodaj zawodnika</a></li><br>
+        <li><a href="/player/list">Lista zawodników</a></li>
+    </ul>
+</div>
 </body>
 </html>

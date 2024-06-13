@@ -10,12 +10,21 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        table{
+            border: 1px solid;
+            margin: 0 auto;
+            width: 50%;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 <table>
     <c:forEach items="${playerNames}" var="playerName">
         <tr>
             <td>${playerName}</td>
+            <td>${playerSurname}</td>
         </tr>
     </c:forEach>
 </table>

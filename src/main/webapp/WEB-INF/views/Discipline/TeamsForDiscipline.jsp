@@ -10,6 +10,14 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        table{
+            border: 1px solid;
+            margin: 0 auto;
+            width: 50%;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
     <table>

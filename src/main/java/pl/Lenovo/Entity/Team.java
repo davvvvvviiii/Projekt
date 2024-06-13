@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,7 @@ public class Team {
     private long id;
     @NotNull
     @NotBlank(message = "Nazwa nie może być pusta")
+    @Pattern(regexp = "[a-zA-Z0-9]+", message = "Pole może zawierać tylko litery i cyfry")
     private String name;
     @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
     //@JoinColumn(name = "id_players")
@@ -36,10 +38,17 @@ public class Team {
         List<String> teamNames = new ArrayList<>();
         for (Player player : players) {
             teamNames.add(player.getName());
+            teamNames.add(player.getSurname());
         }
         return teamNames;
     }
-
+//    public List<String> getPlayersSurname(){
+//        List<String> teamNames = new ArrayList<>();
+//        for (Player player : players) {
+//            teamNames.add(player.getSurname());
+//        }
+//        return teamNames;
+//    }
     @Override
     public String toString() {
         return "Team{" +
