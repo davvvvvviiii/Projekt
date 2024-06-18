@@ -27,7 +27,7 @@ public class User {
     private String name;
     @NotNull
     @NotBlank(message = "Nazwisko nie może być puste")
-    @Pattern(regexp = "[a-zA-Z0-9]+", message = "Pole może zawierać tylko litery i cyfry")
+    @Pattern(regexp = "[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+", message = "Pole może zawierać tylko litery i cyfry")
     private String surname;
     @NotNull
     @NotBlank(message = "Hasło nie może być puste")

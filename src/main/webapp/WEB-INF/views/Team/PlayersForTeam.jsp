@@ -17,6 +17,9 @@
             width: 50%;
             border-collapse: collapse;
         }
+        td{
+            border-bottom: 0.5px solid;
+        }
     </style>
 </head>
 <body>

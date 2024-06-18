@@ -24,7 +24,7 @@ public class Team {
     private long id;
     @NotNull
     @NotBlank(message = "Nazwa nie może być pusta")
-    @Pattern(regexp = "[a-zA-Z0-9]+", message = "Pole może zawierać tylko litery i cyfry")
+    @Pattern(regexp = "[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+", message = "Pole może zawierać tylko litery i cyfry")
     private String name;
     @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
     //@JoinColumn(name = "id_players")

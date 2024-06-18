@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,9 +22,11 @@ public class SportDiscipline {
     private long id;
     @NotNull
     @NotBlank(message = "Nazwa nie może być pusta")
+    @Pattern(regexp = "[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+", message = "Pole może zawierać tylko litery")
     private String name;
     @NotNull
     @NotBlank(message = "Opis nie może być pusty")
+    @Pattern(regexp = "[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ ]+", message = "Pole może zawierać tylko litery i cyfry")
     private String description;
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="team_id")

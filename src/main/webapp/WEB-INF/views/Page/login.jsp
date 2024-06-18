@@ -14,7 +14,9 @@
     <title>Login</title>
     <style>
         form{
-            border: 1px solid;
+            border-top: 1px solid;
+            border-right: 1px solid;
+            border-left: 1px solid;
             padding: 15px;
             margin: 0 auto;
             border-collapse: collapse;
@@ -22,6 +24,17 @@
             text-align: center;
         }
         h2{
+            text-align: center;
+        }
+        #error_message{
+
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+            border-right: 1px solid;
+            padding: 15px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 50%;
             text-align: center;
         }
     </style>
@@ -40,11 +53,13 @@
     <br>
     <input type="submit" value="Zaloguj">
 </form>
+<div id="error_message">
 <c:if test="${not empty loginError}">
     <p style="color: red;">Błędne hasło lub login. Spróbuj ponownie </p><Br>
     lub<br>
     <a href="/user/add"> stwórz konto</a>
 </c:if>
+</div>
 <%--<form action="${pageContext.request.contextPath}/login" method="post">--%>
 <%--    <label for="username">Nazwa użytkownika:</label>--%>
 <%--    <input type="text" id="username" name="username"><br>--%>
